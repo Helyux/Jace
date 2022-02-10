@@ -10,6 +10,11 @@ try:
     import os
     import sys
 
+    # Ui
+    from PyQt5 import QtWidgets
+    from PyQt5.QtCore import Qt
+    from ui.main import Ui_Main
+
     # Self
     from src import util
 
@@ -18,7 +23,24 @@ except ImportError as e:
     sys.exit()
 
 
-def main():
+class QTInstance(QtWidgets.QMainWindow, Ui_Main):
+    def __init__(self, parent=None):
+        QtWidgets.QWidget.__init__(self, parent)
+        # disable windows default window buttons
+        # self.setWindowFlags(Qt.FramelessWindowHint)
+        # remove not filled background
+        # self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setupUi(self)
+
+    def btnexit(self):
+        self.destroy()
+        sys.exit(app.exec_())
+
+    def status(self, txt):
+        self.statusbar.showMessage(txt)
+
+
+def preload():
 
     # Load toml config
     global config
@@ -26,4 +48,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    preload()
+    app = QtWidgets.QApplication(sys.argv)
+    window = QTInstance()
+    window.show()
+
+    sys.exit(app.exec_())
+
