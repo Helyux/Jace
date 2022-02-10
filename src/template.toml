@@ -1,0 +1,11 @@
+[Connection]
+host = "https://myexamplecloud.com"         # Hostname on which the own/nextloud instance resides
+
+[Auth]
+user = "exampleuser"                        # User whom has access to the own/nextcloud instance [Can be empty]
+password = "examplepassword"                # Password corresponding to the user [Can be empty]
+
+[Other]
+uploaddir = 'C:\Users\exampleuser\Pictures' # Path to the dir u want to upload
+savepath = 'Zips/'                          # Path on own/nextcloud where u want to save the zip
+zippw = ""                                  # Password to the zipfile [Can be empty for no password]
